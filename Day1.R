@@ -1,0 +1,33 @@
+x <- 1:1000
+y <- 1:1000
+
+east <- sample(x, size = 50, replace = TRUE)
+north <- sample(y, size = 50, replace = TRUE)
+dwellings <- cbind.data.frame(id = 1:50, east, north)
+symbols(east, north, squares = rep(10,50), inches = FALSE)
+
+
+east <- sample(x, size = 40, replace = TRUE)
+north <- sample(y, size = 40, replace = TRUE)
+trees <- cbind.data.frame(east, north)
+symbols(east, north, circles = rep(10,40), inches = FALSE,add=TRUE,fg = "green1",
+        bg = "beige",)
+
+
+east <- sample(x, size = 12, replace = TRUE)
+north <- sample(y, size = 12, replace = TRUE)
+symbols(east, north, circles = rep(20,12), inches = FALSE,add=TRUE,fg = "green4",
+        bg = "beige",)
+big_trees <- cbind.data.frame(east, north)
+  
+locs <- sample(50, size = 7)
+xspline(x = dwellings[locs, 2],
+        y = dwellings[locs, 3],
+        shape = -1,
+        lty = 2)
+
+text(x = dwellings[locs, ]$east + 50, 
+     y = dwellings[locs, ]$north + 50,
+     labels = dwellings[locs, ]$id)
+
+title(main="A Person's Path between Homes")
